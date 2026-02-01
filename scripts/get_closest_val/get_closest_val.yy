@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"get_closest_val",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"get_closest_val",
+  "parent":{
+    "name":"Funcitons",
+    "path":"folders/Funcitons.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

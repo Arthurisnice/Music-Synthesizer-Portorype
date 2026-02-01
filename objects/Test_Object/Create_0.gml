@@ -1,0 +1,11 @@
+note_play=false
+is_playing=false
+curent_gain=0
+target_gain=0
+sound_id=0
+finish=false
+steps = 0
+release_speed=0.1
+attack_speed=0.05
+milliseconds=1000
+note_play=false
