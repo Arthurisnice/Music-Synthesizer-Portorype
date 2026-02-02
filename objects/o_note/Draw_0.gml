@@ -56,7 +56,7 @@ if (place_meeting(x,y,o_mouse) or selected==true) && off_mouse==0 && o_mouse.pri
 			o_mouse.copy=true
 			o_mouse.note_val=note_index
 			o_mouse.nt_max_gain=max_gain
-			o_mouse.nt_release_speed=release_amt
+			o_mouse.nt_release_speed=release_speed
 			o_mouse.nt_attack_speed=attack_speed
 			o_mouse.nt_pitch_amt=pitch_amt
 			o_mouse.nt_scale=image_xscale

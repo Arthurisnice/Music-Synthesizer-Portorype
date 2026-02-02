@@ -15,6 +15,12 @@ if audio_is_playing(my_snd) && o_note_creator.pos_x<x
 
 }
 
+if place_meeting(x,y,o_trash_can) && mouse_check_button_pressed(mb_left)
+{
+	audio_stop_sound(temp_sound)
+	instance_destroy()
+}
+
 if recalculate==true
 {
 	var _pox_x = x

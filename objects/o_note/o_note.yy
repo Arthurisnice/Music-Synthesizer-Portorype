@@ -12,8 +12,8 @@
   "name":"o_note",
   "overriddenProperties":[],
   "parent":{
-    "name":"Sound_players",
-    "path":"folders/Objects/Sound_players.yy",
+    "name":"Objects",
+    "path":"folders/Objects.yy",
   },
   "parentObjectId":null,
   "persistent":false,
