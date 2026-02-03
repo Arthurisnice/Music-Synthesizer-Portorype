@@ -7,13 +7,14 @@ if spawn==true
 	with(temp_note)
 	{
 		my_snd=temp_note.my_snd_arr[o_Instrument_chooser.val_to_send]
-		temp_sound = audio_play_sound(temp_note.my_snd_arr[o_Instrument_chooser.val_to_send],0,true,1,0,o_note_creator.note_pitch_amt)
+		temp_sound = audio_play_sound(temp_note.my_snd_arr[o_Instrument_chooser.val_to_send],0,true,o_note_creator.note_max_gain,0,o_note_creator.note_pitch_amt)
 		alarm[0]=10
 		note_index=o_Instrument_chooser.valeu
 		max_gain=o_note_creator.note_max_gain
 		attack_speed=o_note_creator.note_attack_speed
 		release_speed=o_note_creator.note_release_speed
 		pitch_amt=o_note_creator.note_pitch_amt
+		my_text=o_note_creator.note_text
 	}
 	o_mouse.selectee=0
 	o_note.selected=false

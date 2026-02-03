@@ -113,7 +113,10 @@ attack_val=clamp(attack_val,0.001,1)
 release_val=clamp(release_val,0.001,1)
 pitch_val=clamp(pitch_val,0.01,5)
 
-my_note.max_gain=gain_val
-my_note.attack_speed=attack_val
-my_note.release_speed=release_val
-my_note.pitch_amt=pitch_val
+if instance_exists(my_note)
+{
+	my_note.max_gain=gain_val
+	my_note.attack_speed=attack_val
+	my_note.release_speed=release_val
+	my_note.pitch_amt=pitch_val
+}

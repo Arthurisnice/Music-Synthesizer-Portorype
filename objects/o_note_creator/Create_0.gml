@@ -28,3 +28,4 @@ note_max_gain=1
 note_attack_speed=1
 note_release_speed=1
 note_pitch_amt=1
+note_text=""

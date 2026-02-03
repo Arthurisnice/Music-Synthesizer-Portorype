@@ -77,6 +77,7 @@ if valeu<4 or valeu>6
 				note_attack_speed=array_of_instrument[1]
 				note_release_speed=array_of_instrument[2]
 				note_pitch_amt=array_of_instrument[3]+(array_of_instrument[4]*other.i)
+				note_text=o_Instrument_chooser.notes_array[other.i]
 			}
 			o_note_creator.spawn=true
 		}
@@ -116,6 +117,7 @@ else if valeu==4
 				note_attack_speed=array_of_instrument[1]
 				note_release_speed=array_of_instrument[2]
 				note_pitch_amt=array_of_instrument[3]+(array_of_instrument[4]*other.i)
+				note_text="PENIS"
 			}
 			o_note_creator.spawn=true
 		}
@@ -154,6 +156,7 @@ else if valeu==5
 					note_attack_speed=array_of_instrument[1]
 					note_release_speed=array_of_instrument[2]
 					note_pitch_amt=array_of_instrument[3]+(array_of_instrument[4]*other.i)
+					note_text=o_Instrument_chooser.letter_array[other.i]
 				}
 				o_note_creator.spawn=true
 			}
@@ -190,6 +193,7 @@ else if valeu==5
 					note_attack_speed=array_of_instrument[1]
 					note_release_speed=array_of_instrument[2]
 					note_pitch_amt=array_of_instrument[3]+(array_of_instrument[4]*other.i)
+					note_text=o_Instrument_chooser.letter_array[other.i]
 				}
 				o_note_creator.spawn=true
 			}

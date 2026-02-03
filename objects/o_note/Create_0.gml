@@ -19,7 +19,13 @@ recalculate=false
 selected_id=0
 release_amt=0
 
+_org_alpha = draw_get_alpha()
+
 note_index=0
+
+muted=false
+
+image_speed=0
 
 calculate_release=false
 
@@ -40,5 +46,6 @@ pitch_amt=1
 milliseconds=sprite_width*100
 note_play=false
 
+my_text=""
 
 original_xcale=0
