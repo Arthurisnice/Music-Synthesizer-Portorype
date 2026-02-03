@@ -51,7 +51,7 @@
     {"id":{"name":"x_note_5","path":"sounds/x_note_5/x_note_5.yy",},},
     {"id":{"name":"x_note_6","path":"sounds/x_note_6/x_note_6.yy",},},
     {"id":{"name":"x_note_7","path":"sounds/x_note_7/x_note_7.yy",},},
-    {"id":{"name":"bass","path":"sprites/bass/bass.yy",},},
+    {"id":{"name":"fish","path":"sprites/fish/fish.yy",},},
     {"id":{"name":"s_instr_control_mute","path":"sprites/s_instr_control_mute/s_instr_control_mute.yy",},},
     {"id":{"name":"s_intrsuments","path":"sprites/s_intrsuments/s_intrsuments.yy",},},
     {"id":{"name":"s_mouse","path":"sprites/s_mouse/s_mouse.yy",},},
