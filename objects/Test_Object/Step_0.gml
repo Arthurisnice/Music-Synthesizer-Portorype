@@ -47,7 +47,7 @@ if note_play==true && sound_id==0
 	sound_id = 0
 	steps=0
 	
-	steps = ceil((milliseconds / 1000) * room_speed)
+	steps = ceil((milliseconds / 1000) * 60)
 	is_playing = true
 	sound_id = audio_play_sound(Sound_Test, 0, true,0)
 

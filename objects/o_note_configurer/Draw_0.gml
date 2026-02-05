@@ -111,7 +111,7 @@ if point_in_rectangle(o_mouse.x,o_mouse.y,x+11+(c_dist_x*1),y+11+(c_dist_y*3),x+
 gain_val=clamp(gain_val,0.01,2)
 attack_val=clamp(attack_val,0.001,1)
 release_val=clamp(release_val,0.001,1)
-pitch_val=clamp(pitch_val,0.01,5)
+pitch_val=clamp(pitch_val,0.01,50)
 
 if instance_exists(my_note)
 {
@@ -119,4 +119,10 @@ if instance_exists(my_note)
 	my_note.attack_speed=attack_val
 	my_note.release_speed=release_val
 	my_note.pitch_amt=pitch_val
+}
+
+if place_meeting(x,y,o_note_configurer)
+{
+	my_note.selected=false
+	instance_destroy()
 }

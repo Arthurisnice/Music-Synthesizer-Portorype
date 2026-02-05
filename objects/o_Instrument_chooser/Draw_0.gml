@@ -108,7 +108,7 @@ else if valeu==4
 		draw_text(x_pos+size/2+offset-1,y_pos,"Custom")
 		draw_set_colour(c_white)
 		draw_set_font(Font_Note_Text)
-		if collision_rectangle(x_pos+offset,y_pos+size/2,x_pos+size+offset,y_pos-size/2,o_mouse,false,true) && mouse_check_button_pressed(mb_left)
+		if collision_rectangle(x_pos+offset,y_pos+size/8,x_pos+size+offset,y_pos-size/8,o_mouse,false,true) && mouse_check_button_pressed(mb_left)
 		{
 			with(o_note_creator)
 			{

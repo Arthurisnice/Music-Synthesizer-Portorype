@@ -49,3 +49,5 @@ note_play=false
 my_text=""
 
 original_xcale=0
+
+selected_in_zone=false

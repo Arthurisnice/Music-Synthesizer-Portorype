@@ -8,7 +8,7 @@ if place_meeting(x,y,o_note) or !place_meeting(x,y,o_mouse) {clicks=0}
 
 if place_meeting(x,y,o_mouse) && !place_meeting(x,y,o_note) && mouse_check_button_pressed(mb_left) && clicks==1
 {
-	if instance_exists(o_note) { instance_destroy(o_note) }
+	if instance_exists(o_note) { instance_destroy(o_note); o_mouse.note_colision=false}
 	clicks=0
 }
 

@@ -1,13 +1,12 @@
 ref_o = o_note_creator.pos_x
-if draw_get_alpha()>=1
+if _org_alpha>=1
 {
-	if collision_line(ref_o,0,ref_o,room_height,self,false,false) && o_note_creator.paused==false && note_play==false
+	if collision_line(ref_o,0,ref_o,room_height,self,false,false) && selected_in_zone==false  && o_note_creator.paused==false && note_play==false
 	{
 			 note_play=true
 	}
 	if audio_is_playing(my_snd) && o_note_creator.pos_x<x
 	{
-		finish=true
 		note_play=false
 		milliseconds=(sprite_width*25)
 		audio_stop_sound(sound_id)
@@ -29,13 +28,14 @@ if draw_get_alpha()>=1
 		var distance = abs(_pox_x-line_x)
 		var size = sprite_width-distance
 		var mill=(size*25)
-		steps = (ceil((mill / 1000) * room_speed))
+		steps = (ceil((mill / 1000) * 60))
 		recalculate=false
 	}
 
-	if last_pos!=selected && selected==true && !place_meeting(x,y,o_note)
+	if last_pos!=selected && selected==true && !place_meeting(x,y,o_note) && selected_in_zone==false 
 	{
-		menu_id=instance_create_layer(1133,97,"Line",o_note_configurer)
+		menu_id=instance_create_layer(o_mouse.conf_x,o_mouse.conf_y,"Line",o_note_configurer)
+		menu_id.mode=0
 		menu_id.my_note=id
 		menu_id.depth=line.depth-5
 		menu_id.gain_val=max_gain
@@ -49,14 +49,15 @@ if draw_get_alpha()>=1
 		menu_id=0
 	}
 }
-if selected==true
+if selected_in_zone==true {selected=false}
+if selected==true && selected_in_zone==false
 {
 		var left_edge = x
 		var right_edge = x+sprite_width
 		var top = y-sprite_height/2
 		var bottom = y+sprite_height/2
 
-		if collision_rectangle(right_edge+2,top,right_edge-5,bottom,o_mouse,false,true) && o_mouse.prioraty==0 && !place_meeting(x,y,o_note_configurer)
+		if collision_rectangle(right_edge+3,top,right_edge-3,bottom,o_mouse,false,true) && o_mouse.prioraty==0 && !place_meeting(x,y,o_note_configurer)
 		{
 			//pull right
 			o_mouse.image_index=2
@@ -166,7 +167,7 @@ if o_note_creator.paused==false
 		is_playing=false
 		sound_id = 0
 		steps=0
-		steps = ceil((milliseconds / 1000) * room_speed)
+		steps = ceil((milliseconds / 1000) * 60)
 		is_playing = true
 		sound_id = audio_play_sound(my_snd, 0, true,0)
 
@@ -211,4 +212,10 @@ else if o_aintr_ctrl.mute_arr[5]==true  && o_note_creator.paused==false && note_
 {
 	audio_pause_sound(my_snd)
 }
-else {audio_resume_sound(my_snd)}
+else if o_note_creator.paused==false {audio_resume_sound(my_snd)}
+
+if place_meeting(x,y,o_note)
+{
+	o_mouse.note_colision=true
+}
+else {o_mouse.note_colision=false}

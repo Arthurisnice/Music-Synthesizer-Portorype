@@ -35,7 +35,7 @@ if pos_x!= room_width
 		//draw_line_width_colour(pos_x,0+sprite_height,pos_x,room_height,3,c_yellow,c_yellow)
 		if paused==false
 		{
-			var multiplyer = 0.66
+			var multiplyer = 1.20
 			pos_x+=multiplyer
 			pos_x = (round(pos_x * 100) / 100)
 			if final_move < 5.25 {final_move+=multiplyer}
