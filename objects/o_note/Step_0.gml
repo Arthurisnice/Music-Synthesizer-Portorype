@@ -8,7 +8,7 @@ if _org_alpha>=1
 	if audio_is_playing(my_snd) && o_note_creator.pos_x<x
 	{
 		note_play=false
-		milliseconds=(sprite_width*25)
+		//milliseconds=(sprite_width*25)
 		audio_stop_sound(sound_id)
 		is_playing=false
 		sound_id = 0
@@ -23,13 +23,7 @@ if _org_alpha>=1
 
 	if recalculate==true
 	{
-		var _pox_x = x
-		var line_x = o_note_creator.pos_x
-		var distance = abs(_pox_x-line_x)
-		var size = sprite_width-distance
-		var mill=(size*25)
-		steps = (ceil((mill / 1000) * 60))
-		recalculate=false
+		
 	}
 
 	if last_pos!=selected && selected==true && !place_meeting(x,y,o_note) && selected_in_zone==false 
@@ -39,8 +33,8 @@ if _org_alpha>=1
 		menu_id.my_note=id
 		menu_id.depth=line.depth-5
 		menu_id.gain_val=max_gain
-		menu_id.attack_val=attack_speed
-		menu_id.release_val=release_speed
+		menu_id.attack_val=base_atkk_speed
+		menu_id.release_val=base_release_speed
 		menu_id.pitch_val=pitch_amt
 	}
 	else if selected==false && menu_id!=0
@@ -100,8 +94,8 @@ var width_s = left==true ? sprite_get_width(s_notes): sprite_get_width(s_notes)*
 if mouse_check_button(mb_left) && held==true && off_mouse==0 && o_mouse.prioraty!=id
 	{
 			var last_xcale=image_xscale
-			var pos = get_closest_val(o_note_creator.grid_x_arr,x-(sprite_width/2))/10
-			var dist = 1 + (get_closest_val(o_note_creator.grid_x_arr,o_mouse.x-(sprite_width/2)-o_mouse.sprite_width/2)/10) - pos
+			var pos = get_closest_val(o_note_creator.grid_x_arr,x-(sprite_width/2))/(sprite_wd/2)
+			var dist = 1 + (get_closest_val(o_note_creator.grid_x_arr,o_mouse.x-(sprite_width/2)-o_mouse.sprite_width/2)/(sprite_wd/2)) - pos
 			image_xscale = dist/2
 			if image_xscale<=0 {image_xscale=1}
 	}
@@ -129,7 +123,10 @@ if o_note_creator.paused==false
 	{
 	    target_gain = 0
 	}
-
+	
+	attack_speed=clamp(base_atkk_speed*(o_note_creator.bpm/60),0.001,1)
+	release_speed=base_release_speed*(o_note_creator.bpm/60)
+	
 	// move toward target
 	if target_gain==max_gain
 	{
@@ -140,7 +137,7 @@ if o_note_creator.paused==false
 		curent_gain = lerp(curent_gain, target_gain, release_speed)
 	}
 	
-	
+	curent_gain=clamp(curent_gain,0,max_gain)
 
 	if (sound_id != 0)
 	{
@@ -160,14 +157,15 @@ if o_note_creator.paused==false
 	// start sound once
 	if note_play==true && sound_id==0
 	{
+		
+		steps = ceil((60/(24*(o_note_creator.bpm/60)))*sprite_width)
+		if o_note_creator.bpm=120 {steps=steps+2}
+		
 		show_debug_message("started")
-	
-		milliseconds=(sprite_width*25)
 		if audio_sound_is_playable(sound_id) {audio_stop_sound(sound_id)}
 		is_playing=false
 		sound_id = 0
-		steps=0
-		steps = ceil((milliseconds / 1000) * 60)
+
 		is_playing = true
 		sound_id = audio_play_sound(my_snd, 0, true,0)
 

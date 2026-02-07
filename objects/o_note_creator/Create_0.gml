@@ -13,9 +13,14 @@ timer_count=0
 
 spawn=false
 
-for (i=0;i<room_width/10;i++)
+grid_width=sprite_get_width(s_notes)
+
+bpm=60
+last_bpm=bpm
+
+for (i=0;i<room_width/(grid_width/2);i++)
 {
-	array_push(grid_x_arr,i*10)
+	array_push(grid_x_arr,i*(grid_width/2))
 }
 
 for (i=0;i<room_height/32;i++)

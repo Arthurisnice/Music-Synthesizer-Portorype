@@ -19,7 +19,6 @@
   ],
   "ForcedPrefabProjectReferences":[],
   "IncludedFiles":[
-    {"$GMIncludedFile":"","%Name":"struct_as_json.json","CopyToMask":-1,"filePath":"datafiles/Nova pasta","name":"struct_as_json.json","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"struct_as_json.json","CopyToMask":-1,"filePath":"datafiles","name":"struct_as_json.json","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
   ],
   "isEcma":false,

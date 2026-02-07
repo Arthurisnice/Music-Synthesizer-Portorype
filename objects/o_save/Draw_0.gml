@@ -44,8 +44,8 @@ if (timer>0 && keyboard_check_pressed(vk_enter)) or ready==true
 			if _arr[0]==0 {note_index=6}
 			else {note_index=_arr[0]}
 			max_gain=_arr[1]
-			attack_speed=_arr[2]
-			release_speed=_arr[3]
+			base_atkk_speed=_arr[2]
+			base_release_speed=_arr[3]
 			pitch_amt=_arr[4]
 			my_text=_arr[5]
 			image_xscale=_arr[6]

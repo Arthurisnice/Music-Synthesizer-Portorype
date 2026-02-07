@@ -256,3 +256,4 @@ else if moving_zone==true && mouse_check_button_released(mb_left)
 	end_zone_x_offset=0
 	end_zone_y_offset=0
 }
+draw_text(x,y+15,o_note_creator.bpm)

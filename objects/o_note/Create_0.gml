@@ -41,9 +41,23 @@ steps=0
 max_gain=1
 attack_speed=1
 release_speed=1
+base_atkk_speed=1
+base_release_speed=1
 pitch_amt=1
 
-milliseconds=sprite_width*100
+
+sprite_wd=sprite_width
+
+
+
+
+multiplication_amt_ml_to_sc = sprite_width/o_note_creator.bpm
+
+milliseconds=sprite_width*multiplication_amt_ml_to_sc
+
+steps = ceil(60/sprite_width)
+
+show_debug_message(steps)
 note_play=false
 
 my_text=""

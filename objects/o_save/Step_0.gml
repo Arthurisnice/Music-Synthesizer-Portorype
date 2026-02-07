@@ -20,8 +20,8 @@ if try_save==true && instance_exists(o_note) && o_mouse.note_colision==false  &&
 		
 		array_push(note_arr_temp,note_of.note_index)
 		array_push(note_arr_temp,note_of.max_gain)
-		array_push(note_arr_temp,note_of.attack_speed)
-		array_push(note_arr_temp,note_of.release_speed)
+		array_push(note_arr_temp,note_of.base_atkk_speed)
+		array_push(note_arr_temp,note_of.base_release_speed)
 		array_push(note_arr_temp,note_of.pitch_amt)
 		array_push(note_arr_temp,note_of.my_text)
 		array_push(note_arr_temp,note_of.image_xscale)

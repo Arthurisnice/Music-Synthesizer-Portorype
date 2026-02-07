@@ -118,8 +118,8 @@ pitch_val=clamp(pitch_val,0.1,50)
 if instance_exists(my_note)
 {
 	my_note.max_gain=gain_val
-	my_note.attack_speed=attack_val
-	my_note.release_speed=release_val
+	my_note.base_atkk_speed=attack_val
+	my_note.base_release_speed=release_val
 	my_note.pitch_amt=pitch_val
 }
 

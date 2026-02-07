@@ -45,7 +45,6 @@ switch(text)
 	case 7:
 		color=c_maroon
 		break;
-		
 	case 2:
 		color=c_blue
 		break;
@@ -88,8 +87,8 @@ if (place_meeting(x,y,o_mouse) or selected==true) && off_mouse==0 && o_mouse.pri
 			o_mouse.copy=true
 			o_mouse.note_val=note_index
 			o_mouse.nt_max_gain=max_gain
-			o_mouse.nt_release_speed=release_speed
-			o_mouse.nt_attack_speed=attack_speed
+			o_mouse.nt_release_speed=base_release_speed
+			o_mouse.nt_attack_speed=base_atkk_speed
 			o_mouse.nt_pitch_amt=pitch_amt
 			o_mouse.nt_scale=image_xscale
 			o_mouse.nt_letter=my_text
@@ -109,7 +108,7 @@ if _org_alpha>=1 {draw_set_alpha(0.3)}
 else {draw_set_alpha(0)}
 
 //displays the attack amount
-var w_tri_attk = (max_gain/attack_speed)*2
+var w_tri_attk = (max_gain/base_atkk_speed)*2
 if attack_speed<1 
 {
 	draw_triangle(x,y-sprite_height/2,x,y+sprite_height/2,x+w_tri_attk,y,false)
@@ -118,7 +117,7 @@ if attack_speed<1
 draw_set_colour(c_blue)
 
 //displays the release amount
-var w_tri_reles =  w_tri_attk<sprite_width? (max_gain/release_speed)*2 : abs((w_tri_attk-sprite_width)-((max_gain/release_speed)*2));
+var w_tri_reles =  w_tri_attk<sprite_width? (max_gain/base_release_speed)*2 : abs((w_tri_attk-sprite_width)-((max_gain/release_speed)*2));
 if release_speed<1 
 {
 	draw_triangle(x+sprite_width,y-sprite_height/2,x+sprite_width,y+sprite_height/2,x+sprite_width+w_tri_reles,y,false)
@@ -156,6 +155,7 @@ draw_text(x, y+40,
     "release_speed: " + string(release_speed) + "\n" +
     "attack_speed: " + string(attack_speed) + "\n" +
     "milliseconds: " + string(milliseconds) + "\n" +
+	"multiplication_amt: " + string(multiplication_amt_ml_to_sc) + "\n" +
 	"index: " + string(note_index) + "\n" +
 	"selected_in_zone: " + string(selected_in_zone) + "\n" +
 	"selected: " + string(selected) + "\n" +

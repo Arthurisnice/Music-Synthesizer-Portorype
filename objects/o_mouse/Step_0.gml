@@ -81,8 +81,8 @@ if keyboard_check_pressed(ord("C")) && selecting_zone==true && note_colision==fa
 		temp_arr[0]=true
 		temp_arr[1]=selected_array[i].note_index
 		temp_arr[2]=selected_array[i].max_gain
-		temp_arr[3]=selected_array[i].release_speed
-		temp_arr[4]=selected_array[i].attack_speed
+		temp_arr[3]=selected_array[i].base_release_speed
+		temp_arr[4]=selected_array[i].base_atkk_speed
 		temp_arr[5]=selected_array[i].pitch_amt
 		temp_arr[6]=selected_array[i].image_xscale
 		temp_arr[7]=selected_array[i].my_text
@@ -98,8 +98,8 @@ if keyboard_check_pressed(ord("C")) && selecting_zone==true && note_colision==fa
 		with(temp_note)
 		{
 			max_gain=temp_arr[2]
-			release_speed=temp_arr[3]
-			attack_speed=temp_arr[4]
+			base_release_speed=temp_arr[3]
+			base_atkk_speed=temp_arr[4]
 			pitch_amt=temp_arr[5]
 			image_xscale=temp_arr[6]
 			my_text=temp_arr[7]
@@ -143,4 +143,14 @@ if selecting_zone==true && !place_meeting(x,y,o_note)
 if selecting_zone==true && menu_thing==0
 {
 		menu_thing = instance_create_depth(conf_x_sn,conf_y_sn,depth+5,o_note_conf_zone)
+}
+
+if keyboard_check_pressed(ord("Z"))
+{	
+	o_note_creator.bpm+=10
+}
+
+if keyboard_check_pressed(ord("X"))
+{	
+	o_note_creator.bpm-=10
 }

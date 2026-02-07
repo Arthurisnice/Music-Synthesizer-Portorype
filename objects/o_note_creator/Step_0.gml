@@ -21,8 +21,6 @@ if spawn==true
 	spawn=false
 }
 
-
-
 if keyboard_check_pressed(ord("F")) && !window_get_fullscreen()
 {
 	window_set_fullscreen(true)
