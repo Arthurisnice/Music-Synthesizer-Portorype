@@ -5,10 +5,15 @@ if prioraty!=0
 {
 		with(prioraty)
 		{
-			if !place_meeting(x,y,o_note_creator)
+			if !place_meeting(x,y,o_note_creator) && o_mouse.y<room_height-32
 			{
 				x = get_closest_val(o_note_creator.grid_x_arr,o_mouse.x-sprite_width/2)
 				y = get_closest_val(o_note_creator.grid_y_arr,o_mouse.y)-sprite_height/2
+			}
+			else if !place_meeting(x,y,o_note_creator) && o_mouse.y>room_height-32
+			{
+				x = get_closest_val(o_note_creator.grid_x_arr,o_mouse.x-sprite_width/2)
+				y = get_closest_val(o_note_creator.grid_y_arr,room_height-32)-sprite_height/2
 			}
 			else {x=o_mouse.x-sprite_width/2; y=o_mouse.y}
 		}
@@ -56,7 +61,7 @@ if copy==true
 	copy=false
 }
 
-if keyboard_check_pressed(ord("C")) && selecting_zone==true
+if keyboard_check_pressed(ord("C")) && selecting_zone==true && note_colision==false
 {
 	nt_data=[]
 	var dist_arr_x = array_create(0)
@@ -69,7 +74,6 @@ if keyboard_check_pressed(ord("C")) && selecting_zone==true
 		array_push(dist_arr_y,dist_y)
 	}
 	
-
 	
 	for (i=0;i<array_length(selected_array);i++)
 	{
@@ -129,4 +133,14 @@ if keyboard_check_pressed(ord("C")) && selecting_zone==true
 		selected_array[l].selected_in_zone=true
 	}
 
+}
+
+if selecting_zone==true && !place_meeting(x,y,o_note) 
+{
+	o_mouse.image_index=0
+}
+
+if selecting_zone==true && menu_thing==0
+{
+		menu_thing = instance_create_depth(conf_x_sn,conf_y_sn,depth+5,o_note_conf_zone)
 }

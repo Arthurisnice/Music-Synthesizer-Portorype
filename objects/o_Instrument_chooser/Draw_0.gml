@@ -3,7 +3,8 @@ draw_self()
 draw_set_alpha(0.2)
 draw_set_colour(c_black)
 	
-if point_in_rectangle(o_mouse.x,o_mouse.y,x+72,y+48,x+144,y+84)
+	
+if point_in_rectangle(o_mouse.x,o_mouse.y,x+72,y+48,x+144,y+84) && o_mouse.touching==false
 {
 	if mouse_check_button_pressed(mb_left)
 	{
@@ -15,7 +16,7 @@ if point_in_rectangle(o_mouse.x,o_mouse.y,x+72,y+48,x+144,y+84)
 	
 }
 
-if point_in_rectangle(o_mouse.x,o_mouse.y,x+72,y+6,x+144,y+45)
+if point_in_rectangle(o_mouse.x,o_mouse.y,x+72,y+6,x+144,y+45) && o_mouse.touching==false
 {
 	if mouse_check_button_pressed(mb_left)
 	{
@@ -30,7 +31,7 @@ if point_in_rectangle(o_mouse.x,o_mouse.y,x+72,y+6,x+144,y+45)
 for (i=0;i<6;i++)
 {
 	var multi = 13
-	if point_in_rectangle(o_mouse.x,o_mouse.y,x+3,y+10+(multi*i),x+70,y+20+(multi*i))
+	if point_in_rectangle(o_mouse.x,o_mouse.y,x+3,y+10+(multi*i),x+70,y+20+(multi*i))  && o_mouse.touching==false
 	{
 		draw_rectangle(x+2,y+9+(multi*i),x+70,y+20+(multi*i),false)
 		if mouse_check_button_pressed(mb_left)
@@ -64,11 +65,11 @@ if valeu<4 or valeu>6
 		draw_set_colour(c_black)
 		draw_set_valign(fa_middle)
 		draw_set_halign(fa_center)
-		draw_set_font(Font_Notes_show)
+		draw_set_font(Font_Notes_show_30)
 		draw_text(x_pos+size/2+offset-1,y_pos,notes_array[i])
 		draw_set_colour(c_white)
-		draw_set_font(Font_Note_Text)
-		if collision_rectangle(x_pos+offset,y_pos+size/2,x_pos+size+offset,y_pos-size/2,o_mouse,false,true) && mouse_check_button_pressed(mb_left)
+		draw_set_font(Font_Note_Text_8)
+		if collision_rectangle(x_pos+offset,y_pos+size/2,x_pos+size+offset,y_pos-size/2,o_mouse,false,true) && mouse_check_button_pressed(mb_left) && o_mouse.note_colision==false && o_mouse.touching==false
 		{
 			with(o_note_creator)
 			{
@@ -104,10 +105,10 @@ else if valeu==4
 		draw_set_colour(c_black)
 		draw_set_valign(fa_middle)
 		draw_set_halign(fa_center)
-		draw_set_font(Font_Notes_show)
+		draw_set_font(Font_Notes_show_30)
 		draw_text(x_pos+size/2+offset-1,y_pos,"Custom")
 		draw_set_colour(c_white)
-		draw_set_font(Font_Note_Text)
+		draw_set_font(Font_Note_Text_8)
 		if collision_rectangle(x_pos+offset,y_pos+size/8,x_pos+size+offset,y_pos-size/8,o_mouse,false,true) && mouse_check_button_pressed(mb_left)
 		{
 			with(o_note_creator)
@@ -143,10 +144,10 @@ else if valeu==5
 			draw_set_colour(c_black)
 			draw_set_valign(fa_middle)
 			draw_set_halign(fa_center)
-			draw_set_font(Font_Notes_show_small)
+			draw_set_font(Font_Notes_show_small_20)
 			draw_text(x_pos+size/2+offset-1,y_pos,letter_array[i])
 			draw_set_colour(c_white)
-			draw_set_font(Font_Note_Text)
+			draw_set_font(Font_Note_Text_8)
 			if collision_rectangle(x_pos+offset,y_pos+size/2,x_pos+size+offset,y_pos-size/2,o_mouse,false,true) && mouse_check_button_pressed(mb_left)
 			{
 				with(o_note_creator)
@@ -180,10 +181,10 @@ else if valeu==5
 			draw_set_colour(c_black)
 			draw_set_valign(fa_middle)
 			draw_set_halign(fa_center)
-			draw_set_font(Font_Notes_show_small)
+			draw_set_font(Font_Notes_show_small_20)
 			draw_text(x_pos+size/2+offset-1,y_pos,letter_array[i])
 			draw_set_colour(c_white)
-			draw_set_font(Font_Note_Text)
+			draw_set_font(Font_Note_Text_8)
 			if collision_rectangle(x_pos+offset,y_pos+size/2,x_pos+size+offset,y_pos-size/2,o_mouse,false,true) && mouse_check_button_pressed(mb_left)
 			{
 				with(o_note_creator)

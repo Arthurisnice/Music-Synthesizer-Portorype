@@ -1,4 +1,4 @@
-if spawn==true
+if spawn==true 
 {
 	paused=true
 	if o_mouse.prioraty!=0 {audio_stop_all() ;instance_destroy(o_mouse.prioraty)}

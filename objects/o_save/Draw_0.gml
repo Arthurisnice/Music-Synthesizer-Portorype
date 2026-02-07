@@ -2,7 +2,7 @@ if timer>10 && instance_exists(o_note)
 {
 	timer--
 	draw_set_colour(c_red)
-	draw_set_font(Font_Warning)
+	draw_set_font(Font_Warning_50)
 	draw_set_halign(fa_center)
 	draw_set_valign(fa_middle)
 	draw_text(room_width/2,room_height/2,"Are you sure?\nThis will delete all notes present!\nPress ENTER to continue.\ntime you have to decide:"+string(timer)+"...")
@@ -12,7 +12,7 @@ else if timer>10 && instance_exists(o_note)
 	if timer>1 {timer=1}
 	timer-=0.1
 	draw_set_colour(c_red)
-	draw_set_font(Font_Warning)
+	draw_set_font(Font_Warning_50)
 	draw_set_halign(fa_center)
 	draw_set_valign(fa_middle)
 	draw_set_alpha(timer)
@@ -78,6 +78,19 @@ if place_meeting(x,y,o_mouse) && o_mouse.y>y-2
 }
 draw_set_colour(c_white)
 draw_set_alpha(1)
+
+draw_set_halign(fa_right)
+draw_set_valign(fa_middle)
+draw_set_font(Font_Notes_Type_12)
+
+if o_mouse.debugg==1 or o_mouse.debugg==4
+{
+	
+	draw_text(x, y+15,
+    "working_directory: " + string(working_directory) + "\n" )
+
+}
+
 
 draw_set_halign(fa_left)
 draw_set_valign(fa_top)

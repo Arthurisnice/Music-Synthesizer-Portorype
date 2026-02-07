@@ -5,7 +5,7 @@ var n_dist_y=17
 
 draw_set_colour(c_white)
 
-draw_set_font(Font_Note_Text)
+draw_set_font(Font_Note_Text_8)
 draw_set_valign(fa_middle)
 draw_set_halign(fa_bottom)
 
@@ -111,7 +111,9 @@ if point_in_rectangle(o_mouse.x,o_mouse.y,x+11+(c_dist_x*1),y+11+(c_dist_y*3),x+
 gain_val=clamp(gain_val,0.01,2)
 attack_val=clamp(attack_val,0.001,1)
 release_val=clamp(release_val,0.001,1)
-pitch_val=clamp(pitch_val,0.01,50)
+pitch_val=clamp(pitch_val,0.1,50)
+
+
 
 if instance_exists(my_note)
 {

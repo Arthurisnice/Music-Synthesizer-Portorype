@@ -78,8 +78,8 @@ if place_meeting(x,y,o_mouse) && o_mouse.prioraty!=id && selected==false && off_
 	{
 		draw_sprite_ext(s_notes,0,x,y,x_size,y_size,0,c_black,0.5)
 		o_mouse.image_index=5
-		if mouse_check_button_pressed(mb_left) && selected_in_zone==false  {selected=true; o_mouse.selectee=id}
-		else if mouse_check_button_pressed(mb_right) && selected_in_zone==false  {o_mouse.image_index=0;selected=false;selected_id=0;o_mouse.selectee=0; audio_stop_sound(my_snd);instance_destroy()}
+		if mouse_check_button_pressed(mb_left) && selected_in_zone==false  && !point_in_rectangle(x,y,o_mouse.start_x,o_mouse.start_y,o_mouse.final_x,o_mouse.final_y) {selected=true; o_mouse.selectee=id}
+		else if mouse_check_button_pressed(mb_right) && selected_in_zone==false && !point_in_rectangle(x,y,o_mouse.start_x,o_mouse.start_y,o_mouse.final_x,o_mouse.final_y)  {o_mouse.image_index=0;selected=false;selected_id=0;o_mouse.selectee=0; audio_stop_sound(my_snd);instance_destroy()}
 	}
 if (place_meeting(x,y,o_mouse) or selected==true) && off_mouse==0 && o_mouse.prioraty!=id && selected_in_zone==false
 	{
@@ -131,7 +131,7 @@ draw_set_valign(fa_middle)
 draw_set_colour(c_black)
 var t_color = note_index!=5 ? (c_white):  (c_black);
 draw_set_colour(t_color)
-draw_set_font(Font_Notes_Type)
+draw_set_font(Font_Notes_Type_12)
 if my_text=="PENIS" {draw_sprite_ext(s_notes_custom,0,x+sprite_width/2,y,1,1,0,c_white,_org_alpha)} 
 else  {draw_text(x+(sprite_width/2),y,my_text)}
 
@@ -141,7 +141,7 @@ draw_set_colour(c_white)
 draw_set_halign(fa_left)
 draw_set_valign(fa_top)
 
-if o_mouse.debugg==true
+if o_mouse.debugg==1 or o_mouse.debugg==2
 {
 draw_text(x, y+40,
 	"sound_txt: " + string(string_replace(string(my_snd),"ref sound x_note_","")) + "\n" +
@@ -157,6 +157,8 @@ draw_text(x, y+40,
     "attack_speed: " + string(attack_speed) + "\n" +
     "milliseconds: " + string(milliseconds) + "\n" +
 	"index: " + string(note_index) + "\n" +
+	"selected_in_zone: " + string(selected_in_zone) + "\n" +
+	"selected: " + string(selected) + "\n" +
     "pitch_amt: " + string(pitch_amt)
 );
 }
@@ -183,12 +185,13 @@ if place_meeting(x,y,o_note)
 
 if o_mouse.moving_zone==false && o_mouse.selecting_zone==true && place_meeting(x,y,o_mouse)
 {
-		var x_size = image_xscale
-		var y_size = image_yscale
-		draw_sprite_ext(s_notes,0,x,y,x_size,y_size,0,c_black,0.5)
+		var x_size_mv = image_xscale
+		var y_size_mv = image_yscale
+		draw_sprite_ext(s_notes,0,x,y,x_size_mv,y_size_mv,0,c_black,0.5)
 		
-		if selected_in_zone==true  {o_mouse.image_index=8}
-		else if selected_in_zone==false && o_mouse.note_colision==false {o_mouse.image_index=7}
+		if selected_in_zone==true && place_meeting(x,y,o_mouse)  {o_mouse.image_index=8}
+		else if selected_in_zone==false && o_mouse.note_colision==false && place_meeting(x,y,o_mouse) {o_mouse.image_index=7}
+
 		
 		if mouse_check_button_pressed(mb_left) && selected_in_zone==false && o_mouse.note_colision==false {array_push(o_mouse.selected_array,id); selected_in_zone=true}
 		else if mouse_check_button_pressed(mb_right) && selected_in_zone==true 
@@ -208,4 +211,4 @@ if o_mouse.moving_zone==false && o_mouse.selecting_zone==true && place_meeting(x
 			if array_length(o_mouse.selected_array)<1 {o_mouse.selecting_zone=false}
 		}
 }
-else if o_mouse.selecting_zone==true && place_meeting(x,y,o_mouse) {o_mouse.image_index=0}
+

@@ -4,6 +4,8 @@ image_speed=0
 offset_x=0
 selectee = 0
 
+
+max_dbg=4
 html=false
 
 debugg=false
@@ -27,6 +29,10 @@ color=c_white
 conf_x=1133
 conf_y=97
 
+conf_x_sn=1133
+conf_y_sn=97
+menu_thing=0
+
 selecting_zone=false
 making_zone=false
 start_x=x
@@ -46,3 +52,7 @@ note_colision=false
 moving_zone=false
 
 menu_id=0
+
+saved_x=x
+saved_y=y
+

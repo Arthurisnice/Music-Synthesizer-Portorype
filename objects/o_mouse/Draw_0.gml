@@ -8,24 +8,27 @@ draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale,image_ang
 
 color=c_white
 
-if keyboard_check(ord("D")) && keyboard_check(ord("B")) && keyboard_check_pressed(ord("G")) && debugg==false
+if keyboard_check(ord("D")) && keyboard_check(ord("B")) && keyboard_check_pressed(ord("G"))
 {
-	debugg=true
+	debugg++
 }
-else if keyboard_check(ord("D")) && keyboard_check(ord("B")) && keyboard_check_pressed(ord("G")) && debugg==true
-{
-	debugg=false
-}
+if debugg>max_dbg {debugg=0}
 
-if debugg==true
+
+if debugg>0
 {
-	draw_text(10,10,"Debbug ON")
+	draw_set_valign(fa_top)
+	draw_set_halign(fa_left)
+	draw_set_font(Font_Notes_Type_12)
+	draw_set_colour(c_red)
+	draw_text(10,10,"Debbug ON / "+ string(debugg))
+	draw_set_colour(c_white)
 }
 
 draw_set_halign(fa_left)
 draw_set_valign(fa_top)
 
-if debugg==true
+if debugg==1 or debugg==3
 {
 	var test = "teste"
 	var _note = place_meeting(x,y,o_note) ? "yes": "no";
@@ -50,7 +53,12 @@ if debugg==true
 	"start_y: " + string(start_y) + "\n" +
 	"final_x: " + string(final_x)+ "\n" +
 	"final_y: " + string(final_y) + "\n" +
+	"start_zone_x_offset: " + string(start_zone_x_offset) + "\n" +
+	"start_zone_y_offset: " + string(start_zone_y_offset) + "\n" +
+	"end_zone_x_offset: " + string(end_zone_x_offset)+ "\n" +
+	"end_zone_y_offset: " + string(end_zone_y_offset) + "\n" +
 	"note_coll: " + string(note_colision) + "\n" +
+	"mune_id: " + string(menu_thing) + "\n" +
     "selectee: " + string(selectee)
 );
 
@@ -70,7 +78,7 @@ if !place_meeting(x,y,o_note_creator) && prioraty==0 && !place_meeting(x,y,o_not
 }
 else if selecting_zone==true  //if you selected at least something
 {
-	if mouse_check_button_pressed(mb_left) && !point_in_rectangle(x,y,start_x,start_y,final_x,final_y) && note_colision==false
+	if mouse_check_button_pressed(mb_left) && !point_in_rectangle(x,y,start_x,start_y,final_x,final_y) && !place_meeting(o_mouse.x,o_mouse.y,o_delete_notes) && !place_meeting(o_mouse.x,o_mouse.y,o_note_conf_zone) && note_colision==false
 	{
 		if instance_exists(o_note){ o_note.selected_in_zone=false}
 		selecting_zone=false
@@ -80,6 +88,9 @@ else if selecting_zone==true  //if you selected at least something
 		final_x=0
 		final_y=0
 	}
+	
+	o_delete_notes.x=final_x
+	o_delete_notes.y=start_y
 	
 	draw_set_alpha(0.1)
 	draw_set_colour(c_aqua)
@@ -109,15 +120,18 @@ if making_zone==true && mouse_check_button(mb_left)
 if making_zone==true && mouse_check_button_released(mb_left)
 {
 	var _selc_list = ds_list_create()
+	
+	selected_array=[]
 
 	collision_rectangle_list(start_x,start_y,x,y,o_note,false,true,_selc_list,false)
 	
 	for (i = 0; i < ds_list_size(_selc_list); i++) {
 		if _selc_list[| i]._org_alpha>0.1 
 		{
-			selected_array[i] = _selc_list[| i];
+			array_push(selected_array ,_selc_list[| i])
 		} 
     }
+
 	
 	show_debug_message("list: "+string(selected_array)+"\n---\n")
 	
@@ -164,26 +178,55 @@ if !place_meeting(x,y,o_note_creator) && !place_meeting(x,y,o_note_configurer) &
 	start_zone_y_offset=start_y-y
 	end_zone_x_offset=final_x-x
 	end_zone_y_offset=final_y-y
+	
+	
 }
-if moving_zone==true && mouse_check_button(mb_left)
+if moving_zone==true && mouse_check_button(mb_left) 
 {
+		
+	if x+end_zone_x_offset<room_width && x+start_zone_x_offset>0 && y+end_zone_y_offset<room_height && y+start_zone_y_offset>0+o_note_creator.sprite_height
+	{
+		saved_x=x
+		saved_y=y
+		
+		o_delete_notes.x=x+end_zone_x_offset
+		o_delete_notes.y=y+start_zone_y_offset
 	
-	draw_set_alpha(0.1)
-	draw_set_colour(c_aqua)
+		draw_set_alpha(0.1)
+		draw_set_colour(c_aqua)
 	
-	draw_rectangle(x+start_zone_x_offset,y+start_zone_y_offset,x+end_zone_x_offset,y+end_zone_y_offset,false)
+		draw_rectangle(x+start_zone_x_offset,y+start_zone_y_offset,x+end_zone_x_offset,y+end_zone_y_offset,false)
+		
 	
-	draw_set_alpha(1)
-	draw_set_colour(c_white)
-	
-	for (var l=0; l<array_length(selected_array);l++)
+		draw_set_alpha(1)
+		draw_set_colour(c_white)
+		
+		
+		for (var l=0; l<array_length(selected_array);l++)
+		{
+		
+			selected_array[l].x=get_closest_val(o_note_creator.grid_x_arr,x-x_offeset_array[l])
+			selected_array[l].y=get_closest_val(o_note_creator.grid_y_arr,y-y_offeset_array[l])-selected_array[l].sprite_height/2
+		}
+	}
+	else
 	{
 		
-		selected_array[l].x=get_closest_val(o_note_creator.grid_x_arr,x-x_offeset_array[l])
-		selected_array[l].y=get_closest_val(o_note_creator.grid_y_arr,y-y_offeset_array[l])-selected_array[l].sprite_height/2
+		o_delete_notes.x=saved_x+end_zone_x_offset
+		o_delete_notes.y=saved_y+start_zone_y_offset
+	
+		draw_set_alpha(0.1)
+		draw_set_colour(c_aqua)
+	
+		draw_rectangle(saved_x+start_zone_x_offset,saved_y+start_zone_y_offset,saved_x+end_zone_x_offset,saved_y+end_zone_y_offset,false)
+		
+	
+		draw_set_alpha(1)
+		draw_set_colour(c_white)
+		
 	}
 }
-else if moving_zone==true && mouse_check_button_released(mb_left) 
+else if moving_zone==true && mouse_check_button_released(mb_left) && x+end_zone_x_offset<room_width && x+start_zone_x_offset>0 && y+end_zone_y_offset<room_height && y+start_zone_y_offset>0+o_note_creator.sprite_height
 {
 	moving_zone=false; 
 	
@@ -191,6 +234,21 @@ else if moving_zone==true && mouse_check_button_released(mb_left)
 	start_y=y+start_zone_y_offset
 	final_x=x+end_zone_x_offset
 	final_y=y+end_zone_y_offset
+
+	
+	start_zone_x_offset=0
+	start_zone_y_offset=0
+	end_zone_x_offset=0
+	end_zone_y_offset=0
+}
+else if moving_zone==true && mouse_check_button_released(mb_left)
+{
+	moving_zone=false; 
+	
+	start_x=saved_x+start_zone_x_offset
+	start_y=saved_y+start_zone_y_offset
+	final_x=saved_x+end_zone_x_offset
+	final_y=saved_y+end_zone_y_offset
 
 	
 	start_zone_x_offset=0
