@@ -145,12 +145,3 @@ if selecting_zone==true && menu_thing==0
 		menu_thing = instance_create_depth(conf_x_sn,conf_y_sn,depth+5,o_note_conf_zone)
 }
 
-if keyboard_check_pressed(ord("Z"))
-{	
-	o_note_creator.bpm+=10
-}
-
-if keyboard_check_pressed(ord("X"))
-{	
-	o_note_creator.bpm-=10
-}

@@ -49,7 +49,8 @@ pitch_amt=1
 sprite_wd=sprite_width
 
 
-
+attack_speed=clamp(base_atkk_speed*(o_note_creator.bpm/60),0.001,1)
+release_speed=base_release_speed*(o_note_creator.bpm/60)
 
 multiplication_amt_ml_to_sc = sprite_width/o_note_creator.bpm
 

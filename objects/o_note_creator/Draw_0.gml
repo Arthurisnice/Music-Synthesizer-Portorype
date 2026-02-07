@@ -49,6 +49,9 @@ if pos_x!= room_width
 	}
 if pos_x>=room_width {pos_x=0; start=false}
 
+var pos_x_bpm=o_bpm_controller.x
+var pos_y_bpm=o_bpm_controller.y
+
 //PAUSE BUTTOM CODE__________________________
 
 var pause_sprite_w = sprite_get_width(s_on_off)
@@ -58,14 +61,18 @@ var pause_pos_y= 10+pause_sprite_h/2
 
 var pause_scale=1
 
-if (keyboard_check_pressed(vk_space) && paused==false) or (point_in_rectangle(o_mouse.x,o_mouse.y,pause_pos_x-pause_sprite_w/2,pause_pos_y-pause_sprite_h/2,pause_pos_x+pause_sprite_w/2,pause_pos_y+pause_sprite_h/2) && mouse_check_button_pressed(mb_left) && paused==false)
+if (keyboard_check_pressed(vk_space) && paused==false) or (point_in_rectangle(o_mouse.x,o_mouse.y,pos_x_bpm+7,pos_y_bpm+52,pos_x_bpm+63,pos_y_bpm+75) && mouse_check_button_pressed(mb_left) && paused==false)
 {
+	var temp_ints = instance_create_depth(pos_x_bpm,pos_y_bpm,o_bpm_controller.depth-5,o_bpm_buttons)
+	temp_ints.image_index=6
 	pause_scale=0.9
 	paused=true
 	pos_x=round(pos_x)
 }
-else if (keyboard_check_pressed(vk_space) && paused==true) or (point_in_rectangle(o_mouse.x,o_mouse.y,pause_pos_x-pause_sprite_w/2,pause_pos_y-pause_sprite_h/2,pause_pos_x+pause_sprite_w/2,pause_pos_y+pause_sprite_h/2) && mouse_check_button_pressed(mb_left) && paused==true)
+else if (keyboard_check_pressed(vk_space) && paused==true) or (point_in_rectangle(o_mouse.x,o_mouse.y,pos_x_bpm+7,pos_y_bpm+52,pos_x_bpm+63,pos_y_bpm+75) && mouse_check_button_pressed(mb_left) && paused==true)
 {
+	var temp_ints = instance_create_depth(pos_x_bpm,pos_y_bpm,o_bpm_controller.depth-5,o_bpm_buttons)
+	temp_ints.image_index=7
 	pause_scale=0.9
 	paused=false
 	if instance_exists(o_note) {o_note.recalculate=true}
@@ -76,9 +83,9 @@ if pause_scale!=1
 	pause_scale+=0.01
 }
 
-var on_off_state = (paused==false) ? 0: 1;
 
-draw_sprite_ext(s_on_off,on_off_state,pause_pos_x,pause_pos_y,pause_scale,pause_scale,0,c_white,1)
+
+//draw_sprite_ext(s_controls,on_off_state,pos_x_bpm,pos_y_bpm,pause_scale,pause_scale,0,c_white,1)
 
 //RESET BUTTOM CODE_____________________
 
@@ -91,8 +98,10 @@ var reset_scale=1
 
 //draw_rectangle(reset_pos_x-reset_sprite_w/2,reset_pos_y-reset_sprite_h/2,reset_pos_x+reset_sprite_w/2,reset_pos_y+reset_sprite_h/2,true)
 
-if (keyboard_check_pressed(ord("R"))) or (point_in_rectangle(o_mouse.x,o_mouse.y,reset_pos_x-reset_sprite_w/2,reset_pos_y-reset_sprite_h/2,reset_pos_x+reset_sprite_w/2,reset_pos_y+reset_sprite_h/2) && mouse_check_button_pressed(mb_left))
+if (keyboard_check_pressed(ord("R"))) or (point_in_rectangle(o_mouse.x,o_mouse.y,pos_x_bpm+64,pos_y_bpm+52,pos_x_bpm+122,pos_y_bpm+75) && mouse_check_button_pressed(mb_left))
 {
+	var temp_ints = instance_create_depth(pos_x_bpm,pos_y_bpm,o_bpm_controller.depth-5,o_bpm_buttons)
+	temp_ints.image_index=8
 	reset_scale=0.9
 	pos_x=-10
 	paused=true
@@ -104,17 +113,8 @@ if reset_scale!=1
 	reset_scale+=0.01
 }
 
-draw_sprite_ext(s_stop,0,reset_pos_x,reset_pos_y,reset_scale,reset_scale,0,c_white,1)
+//draw_sprite_ext(s_controls,0,pos_x_bpm,pos_y_bpm,reset_scale,reset_scale,0,c_white,1)
 
-//Mouse Handler -Disabled for now
-
-/*
-if point_in_rectangle(o_mouse.x,o_mouse.y,pause_pos_x-pause_sprite_w/2,pause_pos_y-pause_sprite_h/2,pause_pos_x+pause_sprite_w/2,pause_pos_y+pause_sprite_h/2) or (point_in_rectangle(o_mouse.x,o_mouse.y,reset_pos_x-reset_sprite_w/2,reset_pos_y-reset_sprite_h/2,reset_pos_x+reset_sprite_w/2,reset_pos_y+reset_sprite_h/2))
-{
-	o_mouse.image_index=6
-}
-else if o_mouse.selectee==0 {o_mouse.image_index=0}
-*/
 if timer>0 {timer--}
 
 //draw_text(mouse_x,mouse_y,pos_x)

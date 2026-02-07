@@ -69,7 +69,7 @@ if valeu<4 or valeu>6
 		draw_text(x_pos+size/2+offset-1,y_pos,notes_array[i])
 		draw_set_colour(c_white)
 		draw_set_font(Font_Note_Text_8)
-		if collision_rectangle(x_pos+offset,y_pos+size/2,x_pos+size+offset,y_pos-size/2,o_mouse,false,true) && mouse_check_button_pressed(mb_left) && o_mouse.note_colision==false && o_mouse.touching==false
+		if collision_rectangle(x_pos+offset,y_pos+size/2,x_pos+size+offset,y_pos-size/2,o_mouse,false,true) && mouse_check_button_pressed(mb_left) && o_mouse.note_colision==false
 		{
 			with(o_note_creator)
 			{

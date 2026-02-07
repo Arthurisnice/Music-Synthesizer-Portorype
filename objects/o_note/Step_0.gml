@@ -1,4 +1,8 @@
 ref_o = o_note_creator.pos_x
+	
+attack_speed=clamp(base_atkk_speed*(o_note_creator.bpm/60),0.001,1)
+release_speed=base_release_speed*(o_note_creator.bpm/60)
+
 if _org_alpha>=1
 {
 	if collision_line(ref_o,0,ref_o,room_height,self,false,false) && selected_in_zone==false  && o_note_creator.paused==false && note_play==false
@@ -23,7 +27,11 @@ if _org_alpha>=1
 
 	if recalculate==true
 	{
-		
+		var dist=o_note_creator.pos_x-x
+		var amount = 1-dist/sprite_width
+		steps=(ceil((60/((24)*(o_note_creator.bpm/60)))*sprite_width))*amount
+		show_debug_message("Recalculating: " + string(amount))
+		recalculate=false
 	}
 
 	if last_pos!=selected && selected==true && !place_meeting(x,y,o_note) && selected_in_zone==false 
@@ -123,9 +131,7 @@ if o_note_creator.paused==false
 	{
 	    target_gain = 0
 	}
-	
-	attack_speed=clamp(base_atkk_speed*(o_note_creator.bpm/60),0.001,1)
-	release_speed=base_release_speed*(o_note_creator.bpm/60)
+
 	
 	// move toward target
 	if target_gain==max_gain

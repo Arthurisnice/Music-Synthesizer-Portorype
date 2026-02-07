@@ -11,8 +11,8 @@ if spawn==true
 		alarm[0]=10
 		note_index=o_Instrument_chooser.valeu
 		max_gain=o_note_creator.note_max_gain
-		attack_speed=o_note_creator.note_attack_speed
-		release_speed=o_note_creator.note_release_speed
+		base_atkk_speed=o_note_creator.note_attack_speed
+		base_release_speed=o_note_creator.note_release_speed
 		pitch_amt=o_note_creator.note_pitch_amt
 		my_text=o_note_creator.note_text
 	}
