@@ -45,6 +45,14 @@ base_atkk_speed=1
 base_release_speed=1
 pitch_amt=1
 
+last_x=x
+last_y=y
+trigger_move=false
+
+last_max_gain=max_gain
+last_ase_atkk_speed=base_atkk_speed
+last_base_release_speed=base_release_speed
+last_pitch_amt=pitch_amt
 
 sprite_wd=sprite_width
 

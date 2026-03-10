@@ -1,3 +1,5 @@
+x=o_mouse.cam_pos_x+x_offset_mine
+
 if place_meeting(x,y,o_mouse) && clicks==0 {image_index=1}
 else if clicks=1 {image_index=2}
 else {image_index=0}

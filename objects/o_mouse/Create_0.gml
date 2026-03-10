@@ -56,3 +56,9 @@ menu_id=0
 saved_x=x
 saved_y=y
 
+view_camera[0] = camera_create_view(0, 0, view_wport[0], view_hport[0], 0, noone, -1, -1, -1, -1);
+
+cam_pos_x=0
+cam_pos_y=0
+
+camera_set_view_pos(view_camera[0], cam_pos_x, cam_pos_y);

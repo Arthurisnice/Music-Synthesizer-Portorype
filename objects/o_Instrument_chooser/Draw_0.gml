@@ -49,9 +49,9 @@ draw_set_colour(c_white)
 
 if valeu<4 or valeu>6
 {
-	for (i=0;i<7;i++)
+	for (i=0;i<array_length(notes_array);i++)
 	{
-		var size=50
+		var size=30
 		var offset=5*i
 		var x_pos=x+10+sprite_width+(size*i)
 		var y_pos=(y+sprite_height/2)
@@ -65,7 +65,7 @@ if valeu<4 or valeu>6
 		draw_set_colour(c_black)
 		draw_set_valign(fa_middle)
 		draw_set_halign(fa_center)
-		draw_set_font(Font_Notes_show_30)
+		draw_set_font(Letter_font)
 		draw_text(x_pos+size/2+offset-1,y_pos,notes_array[i])
 		draw_set_colour(c_white)
 		draw_set_font(Font_Note_Text_8)
@@ -74,10 +74,11 @@ if valeu<4 or valeu>6
 			with(o_note_creator)
 			{
 				var array_of_instrument = o_Instrument_chooser.base_array[o_Instrument_chooser.val_to_send]
+				var array_pitch = o_Instrument_chooser.array_pitch_universal
 				note_max_gain=array_of_instrument[0]
 				note_attack_speed=array_of_instrument[1]
 				note_release_speed=array_of_instrument[2]
-				note_pitch_amt=array_of_instrument[3]+(array_of_instrument[4]*other.i)
+				note_pitch_amt=array_pitch[other.i]
 				note_text=o_Instrument_chooser.notes_array[other.i]
 			}
 			o_note_creator.spawn=true
@@ -126,9 +127,9 @@ else if valeu==4
 }
 else if valeu==5
 {
-	for (i=0;i<25;i++)
+	for (i=0;i<26;i++)
 	{
-		if i<12
+		if i<=12
 		{
 			var size=30
 			var offset=5*i
@@ -153,10 +154,11 @@ else if valeu==5
 				with(o_note_creator)
 				{
 					var array_of_instrument = o_Instrument_chooser.base_array[o_Instrument_chooser.val_to_send]
+					var my_pitch = o_Instrument_chooser.array_pitch_vocals
 					note_max_gain=array_of_instrument[0]
 					note_attack_speed=array_of_instrument[1]
 					note_release_speed=array_of_instrument[2]
-					note_pitch_amt=array_of_instrument[3]+(array_of_instrument[4]*other.i)
+					note_pitch_amt=my_pitch[other.i]
 					note_text=o_Instrument_chooser.letter_array[other.i]
 				}
 				o_note_creator.spawn=true

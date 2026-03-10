@@ -1,3 +1,5 @@
+x=o_mouse.cam_pos_x+x_offset_mine
+
 if spawn==true 
 {
 	paused=true

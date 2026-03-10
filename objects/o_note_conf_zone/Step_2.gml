@@ -1,0 +1,1 @@
+if o_mouse.selecting_zone==false {instance_destroy(o_note_conf_zone); o_mouse.menu_thing=0}

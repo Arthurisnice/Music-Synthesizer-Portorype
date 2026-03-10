@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_json_sanitize",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_json_sanitize",
+  "parent":{
+    "name":"Funcitons",
+    "path":"folders/Funcitons.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

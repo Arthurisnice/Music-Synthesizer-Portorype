@@ -1,4 +1,8 @@
 ref_o = o_note_creator.pos_x
+
+if (last_x!=x or last_y!=y) {trigger_move=true}
+
+if trigger_move==true && o_mouse.prioraty!=id && o_mouse.moving_zone==false {o_undo_controller.add_to_array=true; trigger_move=false}
 	
 attack_speed=clamp(base_atkk_speed*(o_note_creator.bpm/60),0.001,1)
 release_speed=base_release_speed*(o_note_creator.bpm/60)

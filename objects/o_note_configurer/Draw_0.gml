@@ -98,7 +98,7 @@ if point_in_rectangle(o_mouse.x,o_mouse.y,x+11+(c_dist_x*1),y+11+(c_dist_y*2),x+
 //PITCH CODE
 if point_in_rectangle(o_mouse.x,o_mouse.y,x+11+(c_dist_x*0),y+11+(c_dist_y*3),x+11+c_x_offset+(c_dist_x*0),y+11+c_y_offset+(c_dist_y*3)) && mouse_check_button_pressed(mb_left)
 {
-	if pitch_val<5 {pitch_val+=mult}
+	if pitch_val<50 {pitch_val+=mult}
 	var button = instance_create_depth(x,y+(c_dist_y*3),depth-2,o_note_button)
 	button.image_index=1
 }

@@ -1,4 +1,4 @@
-
+x=o_mouse.cam_pos_x+x_offset_mine
 
 valeu = clamp(valeu,0,5)
 

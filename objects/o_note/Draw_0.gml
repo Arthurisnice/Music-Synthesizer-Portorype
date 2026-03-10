@@ -84,6 +84,7 @@ if (place_meeting(x,y,o_mouse) or selected==true) && off_mouse==0 && o_mouse.pri
 	{
 		if keyboard_check_pressed(ord("C")) && o_mouse.selecting_zone==false
 		{
+			o_undo_controller.add_to_array=true
 			o_mouse.copy=true
 			o_mouse.note_val=note_index
 			o_mouse.nt_max_gain=max_gain
@@ -130,7 +131,8 @@ draw_set_valign(fa_middle)
 draw_set_colour(c_black)
 var t_color = note_index!=5 ? (c_white):  (c_black);
 draw_set_colour(t_color)
-draw_set_font(Font_Notes_Type_12)
+draw_set_font(o_Instrument_chooser.Letter_font_note)
+if note_index==5 {draw_set_font(Font_Notes_Type_12)}
 if my_text=="PENIS" {draw_sprite_ext(s_notes_custom,0,x+sprite_width/2,y,1,1,0,c_white,_org_alpha)} 
 else  {draw_text(x+(sprite_width/2),y,my_text)}
 

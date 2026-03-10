@@ -29,7 +29,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"s_lina_icon",
+    "path":"sprites/s_lina_icon/s_lina_icon.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"is_valid_compression",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"is_valid_compression",
+  "parent":{
+    "name":"Funcitons",
+    "path":"folders/Funcitons.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

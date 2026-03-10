@@ -50,8 +50,8 @@ if copy==true
 			with(temp_note)
 			{
 				max_gain=o_mouse.nt_max_gain
-				release_speed=o_mouse.nt_release_speed
-				attack_speed=o_mouse. nt_attack_speed
+				base_release_speed=o_mouse.nt_release_speed
+				base_atkk_speed=o_mouse. nt_attack_speed
 				pitch_amt=o_mouse.nt_pitch_amt
 				image_xscale=o_mouse.nt_scale
 				my_text=o_mouse.nt_letter
@@ -145,3 +145,4 @@ if selecting_zone==true && menu_thing==0
 		menu_thing = instance_create_depth(conf_x_sn,conf_y_sn,depth+5,o_note_conf_zone)
 }
 
+depth=-100000

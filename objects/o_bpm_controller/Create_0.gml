@@ -1,0 +1,2 @@
+image_speed=0
+x_offset_mine=x

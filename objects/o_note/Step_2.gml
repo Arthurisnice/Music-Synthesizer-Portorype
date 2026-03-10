@@ -1,1 +1,7 @@
 last_pos=selected
+last_x=x
+last_y=y
+last_max_gain=max_gain
+last_ase_atkk_speed=base_atkk_speed
+last_base_release_speed=base_release_speed
+last_pitch_amt=pitch_amt

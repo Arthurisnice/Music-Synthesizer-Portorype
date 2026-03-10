@@ -1,3 +1,5 @@
+x=o_mouse.cam_pos_x+x_offset_mine
+
 if try_save==true && instance_exists(o_note) && o_mouse.note_colision==false  && o_mouse.touching==false
 {
 	o_mouse.selecting_zone=false
@@ -34,7 +36,8 @@ if try_save==true && instance_exists(o_note) && o_mouse.note_colision==false  &&
 	show_debug_message("////////////////////////\n\n"+string(notes_exit_arr)+"\n\n/////////////////////////")
 	var my_struct=
 	{
-		notes_array:notes_exit_arr
+		notes_array:notes_exit_arr,
+		bpm:o_note_creator.bpm
 	}
 	
 	
@@ -87,11 +90,12 @@ if try_load==true
 						note_recive_arr[l]=notes_array_temp[0][l]
 					}
 					show_debug_message("(>>\LOADED JSON-\n"+string(note_recive_arr)+"\n<<)")
+					o_note_creator.bpm=text.bpm
 			}
 			else
 			{
 				try_load=false
-				instance_create_depth(room_width/2-sprite_width/2,room_height/2-sprite_height/2,depth-5,o_save_wrong)
+				instance_create_depth(o_mouse.cam_pos_x+1280/2-sprite_width/2,room_height/2-sprite_height/2,depth-5,o_save_wrong)
 			}
 	}	
 		timer=120
@@ -99,7 +103,7 @@ if try_load==true
 	else
 	{
 		try_load=false
-		instance_create_depth(room_width/2-sprite_width/2,room_height/2-sprite_height/2,depth-5,o_save_wrong)
+		instance_create_depth(o_mouse.cam_pos_x+1280/2-sprite_width/2,room_height/2-sprite_height/2,depth-5,o_save_wrong)
 	}
 }
 

@@ -7,5 +7,13 @@ draw_set_colour(c_black)
 
 draw_set_colour(c_white)
 
+if o_note_creator.pos_x>o_mouse.cam_pos_x+1280 && o_note_creator.paused==false
+{
+	o_mouse.cam_pos_x=o_note_creator.pos_x
+	camera_set_view_pos(view_camera[0], o_mouse.cam_pos_x, o_mouse.cam_pos_y)
+}
+
+
+
 
 

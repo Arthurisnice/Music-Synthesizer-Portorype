@@ -16,3 +16,5 @@ if o_mouse.html==true
 if !directory_exists(working_directory+"Saved Songs") {
     directory_create(working_directory+"Saved Songs");
 }
+
+x_offset_mine=x
